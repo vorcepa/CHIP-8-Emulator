@@ -10,6 +10,28 @@ int main(int argc, char* argv[]){
 
 	int GameLoop = 1;
 
+	/* Possible new file or function? */
+	FILE *pROM;
+	size_t size;
+	unsigned int *buffer;
+	int i;
+
+	pROM = fopen("b", "rb");
+	fseek(pROM, 0, SEEK_END);
+	size = ftell(pROM);
+	fseek(pROM, 0, SEEK_SET);
+
+	buffer = malloc(size);
+
+	for (i = 0; i<size; i++){
+		printf("%02x ", buffer[i]);
+	}
+
+	printf("\n");
+	fclose(pROM);
+	free(buffer);
+	/* End possible new file or function */
+
 
 	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) != 0){
 		SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
