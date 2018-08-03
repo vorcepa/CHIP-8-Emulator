@@ -13,7 +13,7 @@ int main(int argc, char* argv[]){
 	/* Possible new file or function? */
 	FILE *pROM;
 	size_t size;
-	unsigned int *buffer;
+	unsigned char *buffer;
 	int i;
 
 	pROM = fopen("b", "rb");
@@ -22,6 +22,8 @@ int main(int argc, char* argv[]){
 	fseek(pROM, 0, SEEK_SET);
 
 	buffer = malloc(size);
+
+	size = fread(buffer, 1, size, pROM);
 
 	for (i = 0; i<size; i++){
 		printf("%02x ", buffer[i]);
