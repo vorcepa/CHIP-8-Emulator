@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
+#include "chip8_mem.h"
 
 int main(int argc, char* argv[]){
 	SDL_Window *window = NULL;
 	SDL_Surface *surface = NULL;
-
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_Event userInput;
 
 	int GameLoop = 1;
+	char rom = 'b';
 
 	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) != 0){
 		SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
@@ -31,6 +32,8 @@ int main(int argc, char* argv[]){
 	else{
 		surface = SDL_GetWindowSurface(window);
 	}
+
+	load_file(rom);
 
 	while(GameLoop){
 		SDL_UpdateWindowSurface(window);
