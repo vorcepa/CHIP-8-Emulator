@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include "chip8_mem.h"
+#include "load_file.h"
 
 int main(int argc, char* argv[]){
 	SDL_Window *window = NULL;
